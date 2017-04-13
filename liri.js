@@ -1,24 +1,35 @@
-var keys = require ("./keys.js") {
-console.log(process.argv);
-
-};
-
-var twitter = require ("twitter") {
-console.log(process.argv);
-}
-
-var spotify = require ("spotify") {
-	console.log(process.argv);
-}
-
-var request = require ("request") {
-	console.log(process.argv);
-}
-
-var fs = require ("fs") {
-	console.log(process.argv);
-}
+var keys = require ("./keys.js");
 
 
+var twitter = require ("twitter");
 
-//<http://www.imdb.com/title/tt0485947/>//
+var client = new twitter({
+	consumer_key: '',
+	consumer_secret: '',
+	access_token_key: '',
+	access_token_secret: ''
+});
+
+var spotify = require ("spotify");
+
+spotify.search ({
+	type: "track", query: "I Want it That Way" }, function(err, data) {
+		if (err) {
+			console.log("Error occurred: " + err);
+			return;
+		}
+});
+
+var request = require ("request");
+request("http://www.google.com", function (error, response, body) {
+	console.log("error:", error); 
+	console.log("statusCode:", response && response.statusCode);
+	console.log("body", body);
+});
+
+
+
+var fs = require ("fs");
+
+
+
